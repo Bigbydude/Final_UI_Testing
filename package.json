@@ -4,12 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test tests/tests.spec.ts --headed"
+    "test": "npx playwright test --reporter=allure-playwright tests.spec.ts --headed",
+    "allure:reporter": "npx allure generate ./allure-results --clean",
+    "allure:open": "npx allure open ./allure-report",
+    "format:code": "prettier --write \"**/*.ts\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.25.0"
+    "@playwright/test": "^1.25.0",
+    "allure-commandline": "^2.18.1",
+    "allure-playwright": "^2.0.0-beta.19",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
   }
 }
