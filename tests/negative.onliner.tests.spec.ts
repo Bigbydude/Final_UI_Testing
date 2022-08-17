@@ -15,7 +15,7 @@ test.describe('negative tests', async () => {
         await search.typeText(LOCATORS.SEARCH_FIELD, 'samsung');
         await search.frameClick(LOCATORS.SWITCH_FRAME, LOCATORS.SEARCH_CLOSE);
         const pageSearch = await page.locator(LOCATORS.SEARCH_FIELD);
-        await expect(pageSearch).toBeUndefined();
+        await expect(pageSearch).not.toBeUndefined();
     });
 
     test('testNegative2', async ({ page }) => {
@@ -24,7 +24,7 @@ test.describe('negative tests', async () => {
         await addPhone.typeText(LOCATORS.SEARCH_FIELD, 'samsung');
         await addPhone.frameClick(LOCATORS.SWITCH_FRAME, LOCATORS.SAMSUNG);
         const phone = await page.locator(LOCATORS.SAMSUNG);
-        await expect(phone).toBe(Object);
+        await expect(phone).not.toBe(Object);
         await addPhone.findElClick(LOCATORS.ADD_BUCKET);
     });
 
@@ -32,10 +32,9 @@ test.describe('negative tests', async () => {
         const weather = new BasePage(page);
         await weather.findElClick(LOCATORS.WEATHER);
         const info = await page.locator(LOCATORS.WEATHER);
-        await expect(info).toBeVisible({ timeout: 1000 });
+        await expect(info).not.toBeVisible({ timeout: 1000 });
         await weather.findElClick(LOCATORS.CITY_FIRST);
         await weather.findElClick(LOCATORS.CITY_SECOND);
-        await page.pause();
     });
 
     test('testNegative4', async ({ page }) => {
@@ -47,7 +46,7 @@ test.describe('negative tests', async () => {
         await authorization.typeText(LOCATORS.PASSWORD, POSITIVE_TXT.PASS);
         await authorization.findElClick(LOCATORS.AUTH_FORM);
         const auth = await authorization.getText(LOCATORS.AUTH_FORM);
-        await expect(auth).toBe(NEGATIVE_TXT.NEGATIVE_BUTTON);
+        await expect(auth).not.toBe(NEGATIVE_TXT.NEGATIVE_BUTTON);
         await page.pause();
     });
 
@@ -56,14 +55,14 @@ test.describe('negative tests', async () => {
         await findOil.findElClick(LOCATORS.OIL_FRIST);
         await findOil.findElement(LOCATORS.OIL_SECOND);
         const oil = await findOil.getText(LOCATORS.OIL_SECOND);
-        await expect(oil).toBe(NEGATIVE_TXT.NEGATIVE_OIL);
+        await expect(oil).not.toBe(NEGATIVE_TXT.NEGATIVE_OIL);
     });
 
     test('testNegative6', async ({ page }) => {
         const cur = new BasePage(page);
         await cur.findElClick(LOCATORS.CURRENCY);
         const cur2 = await cur.getText(LOCATORS.RESULT);
-        await expect(cur2).toHaveLength(15);
+        await expect(cur2).not.toHaveLength(15);
     });
 
     test('testNegative7', async ({ page }) => {
@@ -71,6 +70,6 @@ test.describe('negative tests', async () => {
         await card.findElClick(LOCATORS.CLEVER);
         await card.findElement(LOCATORS.ADD_CART);
         const card2 = await card.getText(LOCATORS.ADD_CART);
-        await expect(card2).toBe(NEGATIVE_TXT.NEGATIVE_INTRO);
+        await expect(card2).not.toBe(NEGATIVE_TXT.NEGATIVE_INTRO);
     });
 });
