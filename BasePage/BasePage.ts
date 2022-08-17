@@ -1,5 +1,4 @@
 import { Page } from '@playwright/test';
-import { locators } from '../Helpers/Locators';
 
 export class BasePage {
     protected page: Page;
